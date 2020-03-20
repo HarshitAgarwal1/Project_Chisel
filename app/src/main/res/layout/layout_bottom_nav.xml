@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_alignParentBottom="true"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/White">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/bottomnavviewbar">
+        android:id="@+id/bottomnavviewbar"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/White"
+        app:itemIconTint="@color/navdrawer_item"
+        app:itemTextColor="@color/navdrawer_item"
+        app:itemBackground="@android:color/transparent"
+    >
 
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
 </RelativeLayout>

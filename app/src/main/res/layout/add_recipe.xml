@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:paddingStart="20dp"
+    android:paddingLeft="20dp">
+
+    <EditText
+        android:id="@+id/exerciseSearch"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="50sp"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:fontFamily="casual"
+        android:background="@drawable/searchbg"
+        />
+
+    <EditText
+        android:layout_below="@id/exerciseSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Name"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="@color/White"
+        android:id="@+id/workoutname"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/workoutname"
+        android:layout_marginTop="15dp"
+        android:id="@+id/recyclerviewExercise"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="SAVE"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/White"
+        android:background="@color/colorPrimaryDark"
+        />
+
+
+<!--    android:src="@drawable/ic_add_circle_outline_black_24dp"-->
+<!--    -->
+</RelativeLayout>

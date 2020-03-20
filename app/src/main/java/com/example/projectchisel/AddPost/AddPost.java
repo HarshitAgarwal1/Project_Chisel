@@ -1,4 +1,4 @@
-package com.example.projectchisel.Homepage;
+package com.example.projectchisel.AddPost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,18 +9,22 @@ import android.view.MenuItem;
 
 import com.example.projectchisel.R;
 import com.example.projectchisel.Utils.BottomNavigationViewHelper;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-public class Homepage extends AppCompatActivity {
+public class AddPost extends AppCompatActivity {
 
-    public static final String TAG = "HomeActivity" ;
-    public static final int ACTIVITY_NUM = 0 ;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public static final String TAG = "AddPostActivity" ;
+    public static final int ACTIVITY_NUM = 2 ;
+
+    @Override  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+//        setContentView(R.layout.activity_addpost);
         Log.d(TAG, "onCreate starting") ;
-        setupBottomNavigationView() ;
+//        setupBottomNavigationView() ;
+//        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(AddPost.this) ;
+//        bottomSheetDialog.setContentView(R.layout.activity_addpost);
+//        bottomSheetDialog.show();
         overridePendingTransition(0,0) ;
     }
 
@@ -28,11 +32,11 @@ public class Homepage extends AppCompatActivity {
         Log.d(TAG, "setupBottomNavigationView: setting Up Helper");
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomnavviewbar);
         BottomNavigationViewHelper.setupBottomNavigationViewHelper(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNav(Homepage.this, bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNav(AddPost.this, bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem =  menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-    }
+}
 
 

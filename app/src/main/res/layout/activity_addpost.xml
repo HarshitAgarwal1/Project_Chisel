@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AddPost.AddPost"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--Top Section -->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/rellay1">-->
+
+<!--            <include-->
+<!--                layout="@layout/layout_top_tabs"-->
+<!--                />-->
+
+<!--        </RelativeLayout>-->
+
+        <!--Middle Section -->
+
+        <RelativeLayout
+            android:layout_below="@id/rellay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rellay2"
+            >
+
+            <include
+                layout="@layout/layout_center_tabs"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Recipe"
+                android:id="@+id/addrecipe"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Workout"
+                android:id="@+id/addworkout"
+                android:layout_below="@id/addrecipe"
+                />
+
+        </RelativeLayout>
+
+<!--        &lt;!&ndash;Bottom Nav &ndash;&gt;-->
+<!--        <include-->
+<!--            layout="@layout/layout_bottom_nav"-->
+<!--            />-->
+
+
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

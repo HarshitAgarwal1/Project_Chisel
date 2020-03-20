@@ -19,9 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Homepage.Homepage">
 
-        </activity>
+        <activity android:name=".Homepage.Homepage"></activity>
+        <activity android:name=".Settings.Settings"></activity>
+        <activity android:name=".Profile.Profile"></activity>
+        <activity android:name=".AddPost.AddPost"></activity>
+        <activity android:name=".Explore.Explore"></activity>
+        <activity android:name=".AddPost.AddWorkout"></activity>
+        <activity android:name=".AddPost.AddRecipe"></activity>
     </application>
 
 </manifest>
