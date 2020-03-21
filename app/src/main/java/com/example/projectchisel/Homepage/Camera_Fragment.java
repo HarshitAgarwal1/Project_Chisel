@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectchisel.R;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 public class Camera_Fragment extends Fragment {
 
@@ -21,5 +23,6 @@ public class Camera_Fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_homepage_camera,container, false);
         return view;
+
     }
 }

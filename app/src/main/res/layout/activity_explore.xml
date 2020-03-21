@@ -27,10 +27,11 @@
             android:layout_below="@id/rellay1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rellay2">
+            android:id="@+id/rellay2"
+            android:layout_marginTop="-5dp">
 
             <include
-                layout="@layout/layout_center_tabs"
+                layout="@layout/explore_center_layout"
                 />
 
         </RelativeLayout>
@@ -39,8 +40,6 @@
         <include
             layout="@layout/layout_bottom_nav"
             />
-
-
 
     </RelativeLayout>
 

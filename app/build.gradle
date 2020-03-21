@@ -32,4 +32,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0' //Circle Image View
     implementation 'com.github.bumptech.glide:glide:4.11.0' //Glide Image Downloading and caching
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0' //Glide Compiler Image Downloading and caching
+    //Animation Daimajia Library
+    implementation 'com.daimajia.easing:library:2.0@aar'
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
+
 }

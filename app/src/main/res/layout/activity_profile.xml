@@ -10,28 +10,55 @@
         android:layout_height="wrap_content">
 
         <!--Top Section -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rellay1">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/rellay1">-->
 
-            <include
-                layout="@layout/layout_top_tabs"
-                />
+<!--            <include-->
+<!--                layout="@layout/layout_top_tabs"-->
+<!--                />-->
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
         <!--Middle Section -->
 
         <RelativeLayout
             android:layout_below="@id/rellay1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rellay2"
+            android:background="@color/colorPrimaryDark">
+
+<!--            <include-->
+<!--                layout="@layout/layout_center_tabs"-->
+<!--                />-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/avatar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:id="@+id/profile_pic"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rellay2">
+            android:text="aharshit123456"
+            android:textSize="35sp"
+            android:id="@+id/profile_username"
+            android:layout_below="@id/profile_pic"
+            android:textColor="@color/White"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
 
-            <include
-                layout="@layout/layout_center_tabs"
-                />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_username"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            />
 
         </RelativeLayout>
 

@@ -4,22 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings.Settings">
+    tools:context=".Settings.Settings"
+    android:background="@color/colorPrimaryDark">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <!--Top Section -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rellay1">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/rellay1">-->
 
-            <include
-                layout="@layout/layout_top_tabs"
-                />
+<!--            <include-->
+<!--                layout="@layout/layout_top_tabs"-->
+<!--                />-->
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
         <!--Middle Section -->
 
@@ -29,9 +30,30 @@
             android:layout_height="wrap_content"
             android:id="@+id/rellay2">
 
-            <include
-                layout="@layout/layout_center_tabs"
+<!--            <include-->
+<!--                layout="@layout/layout_center_tabs"-->
+<!--                />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Settings"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@color/Grey"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:id="@+id/settings_head"
+            android:textColor="@color/colorPrimary"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/settings_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/settings_list"
                 />
+
 
         </RelativeLayout>
 

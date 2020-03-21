@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tabs"
     >
+
     </com.google.android.material.tabs.TabLayout>
 </com.google.android.material.appbar.AppBarLayout>
 

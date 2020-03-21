@@ -5,6 +5,9 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,13 +23,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Homepage.Homepage"></activity>
-        <activity android:name=".Settings.Settings"></activity>
-        <activity android:name=".Profile.Profile"></activity>
+        <activity android:name=".Homepage.Homepage" android:launchMode="singleTop"></activity>
+        <activity android:name=".Settings.Settings" android:launchMode="singleTop"></activity>
+        <activity android:name=".Profile.Profile" android:launchMode="singleTop"></activity>
         <activity android:name=".AddPost.AddPost"></activity>
-        <activity android:name=".Explore.Explore"></activity>
-        <activity android:name=".AddPost.AddWorkout"></activity>
-        <activity android:name=".AddPost.AddRecipe"></activity>
+        <activity android:name=".Explore.Explore" android:launchMode="singleTop"></activity>
+        <activity android:name=".AddPost.AddWorkout" android:launchMode="singleTop"></activity>
+        <activity android:name=".AddPost.AddRecipe" android:launchMode="singleTop"></activity>
     </application>
 
 </manifest>

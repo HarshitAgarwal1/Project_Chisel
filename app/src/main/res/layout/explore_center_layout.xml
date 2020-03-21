@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="35sp"
+        android:hint="Search"
+        android:textColorHint="@color/Grey"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:paddingLeft="20dp"
+        android:imeOptions="actionSearch"
+        android:fontFamily="casual"
+        android:background="@drawable/searchbg"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/exploretagsrecyclerview"
+        android:orientation="horizontal"
+        android:layout_below="@id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/posts"
+        android:orientation="vertical"
+        android:layout_below="@id/exploretagsrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        />
+</RelativeLayout>
