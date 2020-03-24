@@ -44,13 +44,14 @@ public class Homepage extends AppCompatActivity {
 
 
 
+
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewpager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_photo_camera_black_24dp);
-        tabLayout.getTabAt(1).setText("Chisel");
+        tabLayout.getTabAt(1).setText("Project Chisel");
         tabLayout.getTabAt(2).setIcon(R.drawable.chat_fragment);
-
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
     }
 
 
@@ -63,6 +64,7 @@ public class Homepage extends AppCompatActivity {
         MenuItem menuItem =  menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
     }
 
 

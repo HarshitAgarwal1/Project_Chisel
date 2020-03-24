@@ -13,6 +13,8 @@
         android:id="@+id/tabs"
     >
 
+<!--        android:minWidth="50dp"-->
+
     </com.google.android.material.tabs.TabLayout>
 </com.google.android.material.appbar.AppBarLayout>
 

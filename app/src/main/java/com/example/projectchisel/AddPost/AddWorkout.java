@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,16 +16,30 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.projectchisel.Homepage.Homepage;
 import com.example.projectchisel.R;
-import com.example.projectchisel.Utils.BottomNavigationViewHelper;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 public class AddWorkout extends AppCompatActivity {
 
+    /*TODO:
+       Spotify PlayerAPI integration (REDIRECT URL Error)
+       Search Feature + Workouts Json Array Called (JSoup Web Scraped)
+       Add Exercise
+
+     */
+
+
     public static final String TAG = "AddWorkoutActivity" ;
+//    private static final String CLIENT_ID = "c68f0be424294d89a82fe63f329950df";
+//    private static final String REDIRECT_URI = "https://developer.spotify.com";
+//    private SpotifyAppRemote mSpotifyAppRemote;
+//    private int PlayerState ;
+//    private Connector.ConnectionListener mConnectionListener;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override  protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +69,8 @@ public class AddWorkout extends AppCompatActivity {
                 pauseWorkout.setVisibility(View.INVISIBLE);
                 playWorkout.setVisibility(View.VISIBLE);
                 endWorkout.setVisibility(View.VISIBLE);
+//                PlayerState = 0 ;
+//                connected(PlayerState);
             }
         });
 
@@ -66,6 +80,8 @@ public class AddWorkout extends AppCompatActivity {
                 pauseWorkout.setVisibility(View.VISIBLE);
                 endWorkout.setVisibility(View.INVISIBLE);
                 playWorkout.setVisibility(View.INVISIBLE);
+//                PlayerState = 1 ;
+//                connected(PlayerState);
             }
         });
 
@@ -96,7 +112,68 @@ public class AddWorkout extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+
     }
+
+
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        ConnectionParams connectionParams =
+//                new ConnectionParams.Builder(CLIENT_ID)
+//                        .setRedirectUri(REDIRECT_URI)
+//                        .showAuthView(true)
+//                        .build();
+//
+//        SpotifyAppRemote.connect(this, connectionParams,
+//                new Connector.ConnectionListener() {
+//
+//                    @Override
+//                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+//                        mSpotifyAppRemote = spotifyAppRemote;
+//                        Log.d(TAG, "Connected! Yay!");
+//                        connected(1);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Throwable throwable) {
+//                        Log.d(TAG, "Spotify Error");
+//                        Log.e(TAG, throwable.getMessage(), throwable);
+//                        // Something went wrong when attempting to connect! Handle errors here
+//
+//                    }
+//                });
+//
+//    }
+//
+//    private void connected(int playerState) {
+//
+//        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+//
+////        switch (playerState) {
+////            case 0:
+////                mSpotifyAppRemote.getPlayerApi().pause();
+////                break;
+////            case 1:
+////
+////                break;
+////            case 2:
+////                mSpotifyAppRemote.getPlayerApi().resume();
+////                break;
+////        }
+//
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
+//    }
+
 }
 
 

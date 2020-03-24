@@ -5,7 +5,8 @@
 
     <dist:module dist:instant="true" />
 
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -15,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,14 +25,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Homepage.Homepage" android:launchMode="singleTop"></activity>
-        <activity android:name=".Settings.Settings" android:launchMode="singleTop"></activity>
-        <activity android:name=".Profile.Profile" android:launchMode="singleTop"></activity>
-        <activity android:name=".AddPost.AddPost"></activity>
-        <activity android:name=".Explore.Explore" android:launchMode="singleTop"></activity>
-        <activity android:name=".AddPost.AddWorkout" android:launchMode="singleTop"></activity>
-        <activity android:name=".AddPost.AddRecipe" android:launchMode="singleTop"></activity>
+        <activity
+            android:name=".Homepage.Homepage"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".Settings.Settings"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".Profile.Profile"
+            android:launchMode="singleTop" />
+        <activity android:name=".AddPost.AddPost" />
+        <activity
+            android:name=".Explore.Explore"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".AddPost.AddWorkout"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".AddPost.AddRecipe"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
