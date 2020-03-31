@@ -45,10 +45,23 @@
             android:textSize="50sp"
             android:id="@+id/settings_head"
             android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Account"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:layout_below="@id/settings_head"
+            android:id="@+id/account"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/settings_head"
+                android:layout_below="@id/account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_list"

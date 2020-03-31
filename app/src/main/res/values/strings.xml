@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Project Chisel</string>
     <string name="username">Username</string>
-    <string name="emailaddress">emailaddress</string>
+    
+    <string name="dbname_usersprivate">user_private</string>
+    <string name="dbname_usersinfo">user_info</string>
+    
+    <string name="emailaddress">Email Address</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="facebook_app_id">516630575666350</string>
+    <string name="fb_login_protocol_scheme">fb516630575666350</string>
 </resources>
