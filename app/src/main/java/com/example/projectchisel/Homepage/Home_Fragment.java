@@ -37,6 +37,8 @@ public class Home_Fragment extends Fragment {
             mAuth.signOut();
             Objects.requireNonNull(getActivity()).finish();
             Intent logout1 = new Intent(Objects.requireNonNull(getActivity()).getApplicationContext(), Login.class);
+            logout1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            logout1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(logout1);
         });
     }

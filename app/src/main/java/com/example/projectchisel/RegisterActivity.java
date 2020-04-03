@@ -41,12 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         TextView login = findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent logina = new Intent(RegisterActivity.this, Login.class);
-                startActivity(logina);
-            }
+        login.setOnClickListener(v -> {
+            Intent logina = new Intent(RegisterActivity.this, Login.class);
+            startActivity(logina);
         });
 
         EditText username = findViewById(R.id.nameregister);
@@ -66,11 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 loadingBar.show();
                 LoginwithEmail(username.getText().toString(),email.getText().toString(), pass.getText().toString());
             }
-
         });
-
-
-
     }
 
     private void LoginwithEmail(final String username, String email, String password) {
@@ -82,8 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-
-                        loadingBar.dismiss();
                         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -106,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         });
                         updateUI(user);
+                        loadingBar.dismiss();
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -132,7 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void addNewUser(String email, String uid, String description, String name, String profile_pic, String username, int age, int height){
+    public void addNewUser(String email, String uid, String description, String
+            name, String profile_pic, String username, int age, int height){
         User_Private user = new User_Private(email, uid, StringManipulation.condenseUsername(username));
         UserInfo userInfo = new UserInfo(description, name, profile_pic, StringManipulation.condenseUsername(username),age, height);
 

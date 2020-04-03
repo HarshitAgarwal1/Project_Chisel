@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -56,7 +57,12 @@ public class Profile extends AppCompatActivity {
                 UserInfo info = RetrieveAccountUsername(dataSnapshot);
                 username.setText(info.getUsername());
                 desc.setText(info.getDescription());
-//                dp.setImageResource(info.getProfile_pic());
+                if (info.getProfile_pic() != null){
+                    Picasso.get().load(info.getProfile_pic()).into(dp);
+                }else{
+                    dp.setImageResource(R.drawable.com_facebook_profile_picture_blank_portrait);
+                }
+
             }
 
             @Override
@@ -73,9 +79,8 @@ public class Profile extends AppCompatActivity {
         Log.d(TAG, "Retrieving Account Details");
         UserInfo info = new UserInfo();
 
-
         for(DataSnapshot ds: dataSnapshot.getChildren()){
-            if(ds.getKey().equals(String.valueOf((R.string.dbname_usersinfo)))){
+            if(ds.getKey().equals("user_info")){
                 info = (Objects.requireNonNull(ds.child(uid).getValue(UserInfo.class)));
                 return info;
             }
