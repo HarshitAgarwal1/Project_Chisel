@@ -1,17 +1,23 @@
 package com.example.projectchisel.Homepage;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.projectchisel.Login;
 import com.example.projectchisel.R;
@@ -19,6 +25,15 @@ import com.example.projectchisel.Utils.BottomNavigationViewHelper;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.io.IOException;
+import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Homepage extends AppCompatActivity {
 
@@ -33,6 +48,7 @@ public class Homepage extends AppCompatActivity {
         setupBottomNavigationView() ;
         overridePendingTransition(0,0) ;
         setupViewPager() ;
+
     }
 
 
@@ -48,9 +64,6 @@ public class Homepage extends AppCompatActivity {
         viewpager.setAdapter(adapter);
         viewpager.setCurrentItem(1);
 
-
-
-
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewpager);
 
@@ -58,6 +71,14 @@ public class Homepage extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Project Chisel");
         tabLayout.getTabAt(2).setIcon(R.drawable.chat_fragment);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
+
+//        if (tabLayout.getTabAt(0).isSelected()){
+//            Intent imageTake = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//            if (imageTake.resolveActivity(getPackageManager())!= null){
+//                startActivityForResult(imageTake,101);
+//            }
+//    }
     }
 
 
@@ -71,6 +92,13 @@ public class Homepage extends AppCompatActivity {
         menuItem.setChecked(true);
     }
 
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//
+//    }
+}
 
 

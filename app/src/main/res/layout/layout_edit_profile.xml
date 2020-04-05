@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
 
-</RelativeLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    >
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account Information"
+        android:textSize="25sp"
+        android:textColor="@color/White"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/account_label"
+        android:layout_marginTop="20dp"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/profile_pic"
+        android:src="@drawable/com_facebook_profile_picture_blank_portrait"
+        android:layout_below="@id/account_label"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Profile Photo"
+            android:textSize="23sp"
+            android:textColor="@color/com_facebook_blue"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/profile_picchange"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/profile_pic"
+            />
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/profile_picchange"
+        android:id="@+id/fullnamelay"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full name: "
+            android:textSize="20sp"
+            android:textColor="@color/White"
+            android:id="@+id/fullname"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:textSize="25sp"
+            android:imeOptions="actionNext"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:textColorHint="@color/Grey"
+            android:textColor="@color/White"
+            android:id="@+id/fullnameinput"
+            android:layout_marginTop="5dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/fullnamelay"
+        android:id="@+id/desclay"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description: "
+            android:textSize="20sp"
+            android:textColor="@color/White"
+            android:id="@+id/desc"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp" />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:textSize="25sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:textColorHint="@color/Grey"
+            android:textColor="@color/White"
+            android:id="@+id/descinput"
+            android:layout_marginTop="5dp"
+            />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/desclay"
+            android:id="@+id/agelay"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: "
+                android:textSize="20sp"
+                android:textColor="@color/White"
+                android:id="@+id/age"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp" />
+
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:imeOptions="actionNext"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:textSize="25sp"
+                android:textColorHint="@color/Grey"
+                android:textColor="@color/White"
+                android:id="@+id/agex"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/agelay"
+            android:id="@+id/heightlay"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height(In cms): "
+                android:textSize="20sp"
+                android:textColor="@color/White"
+                android:id="@+id/height"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp" />
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:hint="Height"
+                android:imeOptions="actionDone"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:textSize="25sp"
+                android:inputType="number"
+                android:textColorHint="@color/Grey"
+                android:textColor="@color/White"
+                android:id="@+id/heightinput"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+            android:text="Save"
+            android:layout_marginTop="30dp"
+            android:id="@+id/savebtn"
+            android:layout_below="@id/heightlay"
+            />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimaryDark" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_remove"
+        android:id="@+id/image"
+        android:contentDescription="exercise image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pushups"
+        android:id="@+id/exercise"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
+
+
+</LinearLayout>

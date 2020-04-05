@@ -33,10 +33,11 @@
 <!--            <include-->
 <!--                layout="@layout/layout_center_tabs"-->
 <!--                />-->
+<!--            -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/avatar"
+            android:src="@drawable/com_facebook_profile_picture_blank_portrait"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:id="@+id/profile_pic"/>

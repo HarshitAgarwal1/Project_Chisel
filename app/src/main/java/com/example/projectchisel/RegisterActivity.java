@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         ,user.getUid()
                                         ,""
                                         , username
-                                        , "R.drawable.ic_profile"
+                                        , null
                                         , usern
                                         ,0
                                         ,0);

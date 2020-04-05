@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
+    android:layout_centerHorizontal="true"
     android:paddingStart="20dp"
-    android:paddingLeft="20dp">
+    android:paddingLeft="20dp"
+    android:paddingEnd="20dp"
+    android:paddingRight="20dp">
 
     <EditText
         android:id="@+id/exerciseSearch"
@@ -26,13 +29,17 @@
         android:background="@drawable/searchbg"
         />
 
+
+
     <EditText
         android:layout_below="@id/exerciseSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Workout Name"
+        android:hint="Workout Name"
         android:textStyle="bold"
+        android:layout_marginTop="15dp"
         android:textSize="30sp"
+        android:textColorHint="@color/Grey"
         android:textColor="@color/White"
         android:id="@+id/workoutname"
         />
@@ -55,7 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/date"
         android:layout_marginTop="15dp"
-        android:id="@+id/recyclerviewExercise"/>
+        android:id="@+id/recyclerviewExercise"
+        android:visibility="visible"/>
 
 
     <ImageButton
@@ -95,5 +103,15 @@
         android:src="@drawable/ic_stop_black_24dp"
         android:layout_alignStart="@id/pauseworkout"
         android:layout_marginStart="125dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/searchlist"
+        android:layout_below="@id/exerciseSearch"
+        android:visibility="gone"
+        android:background="@color/colorPrimaryDark"
+        />
+
 
 </RelativeLayout>

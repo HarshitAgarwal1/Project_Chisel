@@ -1,19 +1,27 @@
 package com.example.projectchisel.Settings;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectchisel.Homepage.SectionsPagerAdapter;
+import com.example.projectchisel.Login;
 import com.example.projectchisel.Model.UserInfo;
 import com.example.projectchisel.Model.User_Private;
 import com.example.projectchisel.Profile.Profile;
@@ -21,6 +29,8 @@ import com.example.projectchisel.R;
 import com.example.projectchisel.Utils.BottomNavigationViewHelper;
 import com.example.projectchisel.Utils.StringManipulation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +39,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.squareup.picasso.Picasso;
 
@@ -44,11 +59,14 @@ public class Settings extends AppCompatActivity {
      */
     public static final String TAG = "SettingsActivity" ;
     public static final int ACTIVITY_NUM = 4 ;
-    private FirebaseAuth mAuth;
     private String uid ;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRef = firebaseDatabase.getReference();
-
+    private int age;
+    private Uri mImageUri ;
+    private int PICK_IMAGE_REQUEST = 1;
+    private StorageReference mStorageRef;
+    private StorageTask mUploadTask;
     public Settings() {
     }
 
@@ -57,7 +75,8 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Log.d(TAG, "onCreate starting") ;
-        mAuth = FirebaseAuth.getInstance() ;
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         setupBottomNavigationView() ;
         overridePendingTransition(0,0) ;
 
@@ -71,9 +90,28 @@ public class Settings extends AppCompatActivity {
             setContentView(R.layout.layout_edit_profile);
             EditText fullname = findViewById(R.id.fullnameinput);
             EditText desc = findViewById(R.id.descinput);
+//            EditText agex = findViewById(R.id.agex);
+//
+//            try{
+//                if (agex != null) {
+//
+//                    age = Integer.parseInt(agex.getText().toString());
+//                }
+//            }catch (NumberFormatException e){
+//                e.printStackTrace();
+//            }
 //            EditText height = findViewById(R.id.heightinput);
             CircleImageView dp = findViewById(R.id.profile_pic);
             Button save = findViewById(R.id.savebtn);
+
+            TextView changedp = findViewById(R.id.profile_picchange);
+            changedp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openFileChooser();
+                }
+            });
+
 
             mRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -81,11 +119,11 @@ public class Settings extends AppCompatActivity {
 
                     UserInfo info = RetrieveAccountUsername(dataSnapshot);
 
-                    Log.d(TAG, String.valueOf(info.getAge())+ info.getHeight() + info.getDescription());
+//                  Log.d(TAG, String.valueOf(info.getAge())+ info.getHeight() + info.getDescription());
                     fullname.setText(info.getName());
                     desc.setText(info.getDescription());
-//                    agevalue[0] = info.getAge();
-//                    age.setText(info.getAge());
+//                    age = info.getAge();
+//                    agex.setText(age);
 //                    height.setText(info.getHeight());
                     if (info.getProfile_pic() != null){
                         Picasso.get().load(info.getProfile_pic()).into(dp);
@@ -105,27 +143,124 @@ public class Settings extends AppCompatActivity {
             });
 
             save.setOnClickListener(v1 -> {
+                if(mUploadTask != null && mUploadTask.isInProgress()) {
+                    Toast.makeText(this, "Task In Progress", Toast.LENGTH_SHORT).show();
+                }else {
 
-                mRef.child("user_info")
-                        .child(uid)
-                        .child("description")
-                        .setValue(desc.getText().toString());
-                mRef.child("user_info")
-                        .child(uid)
-                        .child("name")
-                        .setValue(fullname.getText().toString())
-                        .addOnCompleteListener(task -> {
-                            if(task.isSuccessful()) {
-                            Toast.makeText(Settings.this, "Database Updated", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(Settings.this, "Failure", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, Objects.requireNonNull(task.getException()).toString());
-                        }
+                    mRef.child("user_info")
+                            .child(uid)
+                            .child("description")
+                            .setValue(desc.getText().toString());
+
+                    mRef.child("user_info")
+                            .child(uid)
+                            .child("name")
+                            .setValue(fullname.getText().toString())
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Settings.this, "Database Updated", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Settings.this, "Failure", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, Objects.requireNonNull(task.getException()).toString());
+                                }
+                            });
+
+                    uploadFile();
+                }
+//                mRef.child("user_info")
+//                        .child(uid)
+//                        .child("age")
+//                        .setValue(agex.getText().toString());
+            });
+        });
+
+//  Logout
+        TextView logout = findViewById(R.id.logout);
+        logout.setOnClickListener(v -> {
+            mAuth.signOut();
+            finish();
+            Intent logout1 = new Intent(this, Login.class);
+            logout1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            logout1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(logout1);
+        });
+
+    }
+
+    private void uploadFile() {
+        if(mImageUri != null){
+            ProgressBar progressBar = findViewById(R.id.progress_bar);
+            progressBar.setVisibility(View.VISIBLE);
+            mStorageRef.child(uid+"."+getFileExtension(mImageUri)).delete();
+            StorageReference file = mStorageRef.child(uid+"."+getFileExtension(mImageUri));
+            mUploadTask = file.putFile(mImageUri)
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> progressBar.setProgress(0), 2000);
+
+                        Log.d(TAG, "Image Uploaded to firebase");
+                        // Get a URL to the uploaded content
+                        file.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if(task.isSuccessful()){
+                                    String downloadUrl  = task.getResult().toString();
+                                    mRef.child("user_info")
+                                            .child(uid)
+                                            .child("profile_pic")
+                                            .setValue(downloadUrl);
+                                }else{
+                                    Log.e(TAG, task.getException().getMessage());
+                                }
+                            }
                         });
 
-            });
+                        progressBar.setProgress(0);
+                        progressBar.setVisibility(View.GONE);
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e(TAG, e.getMessage());
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+                            progressBar.setProgress((int)progress);
+                        }
+                    });
+        }else{
+            Toast.makeText(this, "No profile pic selected", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        });
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void openFileChooser() {
+        Intent gallery = new Intent();
+        gallery.setType("image/*");
+        gallery.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(gallery, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST
+                && resultCode == RESULT_OK
+                && data != null
+                && data.getData() != null){
+            mImageUri = data.getData();
+            CircleImageView dp = findViewById(R.id.profile_pic);
+            Picasso.get().load(mImageUri).into(dp);
+        }
     }
 
     private void setupBottomNavigationView() {

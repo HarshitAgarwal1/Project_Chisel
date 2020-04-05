@@ -166,17 +166,25 @@ public class Login extends AppCompatActivity {
                                         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                String[] split = email.split("@");
-                                                String usern = split[0];
-                                                assert user != null;
-                                                addNewUser(email
-                                                        ,user.getUid()
-                                                        ,""
-                                                        ,name
-                                                        ,"https://graph.facebook.com/"+id+"/picture?type=large"
-                                                        , usern
-                                                        ,0
-                                                        ,0);
+                                                if (dataSnapshot.child("user_private")
+                                                        .child(user.getUid())
+                                                        .getValue() == null) {
+
+                                                    String[] split = email.split("@");
+                                                    String usern = split[0];
+                                                    assert user != null;
+                                                    addNewUser(email
+                                                            , user.getUid()
+                                                            , ""
+                                                            , name
+                                                            , "https://graph.facebook.com/" + id + "/picture?type=large"
+                                                            , usern
+                                                            , 0
+                                                            , 0);
+                                                }else{
+                                                    Log.d(TAG, "Doing Nothing");
+                                                    //Do Nothing
+                                                }
                                             }
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError databaseError) {

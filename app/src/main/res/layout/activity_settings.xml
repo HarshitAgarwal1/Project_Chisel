@@ -59,9 +59,24 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/colorPrimaryDark"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Log Out"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@color/colorPrimary"
+                android:textAlignment="center"
+                android:textSize="50sp"
+                android:layout_below="@id/account"
+                android:id="@+id/logout"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/account"
+                android:layout_below="@id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_list"
