@@ -15,10 +15,14 @@ public class UserInfo {
      public int age;
      public int height;
 
-    /*
-    User Info Model from the firebase Database
-           @param description
-
+    /**
+     *User Info Model from the firebase Database
+     * @param description the description of the persion
+     * @param age age of the user
+     * @param height Height
+     * @param profile_pic dp resource link in string
+     * @param name Full name of the person
+     * @param username username unique of the person
      */
     public UserInfo(String description, String name, String profile_pic, String username, int age, int height) {
         this.description = description;

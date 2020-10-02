@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+
+   <de.hdodenhof.circleimageview.CircleImageView
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       android:id="@+id/profile_pic"
+       android:src="@drawable/avatar"
+       app:civ_border_width="1dp"
+       app:civ_border_color="@color/Grey"
+       android:layout_gravity="center"
+       />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_username"
+            android:text="@string/username"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/White"
+            />
+
+        <TextView
+            android:id="@+id/nameregister"
+            android:layout_below="@id/profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placeholder Name"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/Grey"/>
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_close_black_24dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+
+</LinearLayout>

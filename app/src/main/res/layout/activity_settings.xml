@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings.Settings"
+    tools:context=".Profile.Settings"
     android:background="@color/colorPrimaryDark">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -84,13 +84,6 @@
 
 
         </RelativeLayout>
-
-        <!--Bottom Nav -->
-        <include
-            layout="@layout/layout_bottom_nav"
-            />
-
-
 
     </RelativeLayout>
 

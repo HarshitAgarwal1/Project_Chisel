@@ -2,7 +2,9 @@ package com.example.projectchisel.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -29,7 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Profile extends AppCompatActivity {
 
     public static final String TAG = "ProfileActivity" ;
-    public static final int ACTIVITY_NUM = 3 ;
+    public static final int ACTIVITY_NUM = 4 ;
     private FirebaseAuth mAuth;
     private String uid ;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -43,6 +45,7 @@ public class Profile extends AppCompatActivity {
         setupBottomNavigationView() ;
         overridePendingTransition(0,0) ;
 
+        setupToolbar();
         if(mAuth.getCurrentUser() != null){
             uid = mAuth.getCurrentUser().getUid();
         }
@@ -96,6 +99,29 @@ public class Profile extends AppCompatActivity {
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem =  menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profile_topbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setupToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.settings) {
+                    Intent intent = new Intent(Profile.this, Settings.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
+
     }
 
 

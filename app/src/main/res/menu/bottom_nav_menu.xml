@@ -16,17 +16,18 @@
         android:id="@+id/addpost_nav"
         android:icon="@drawable/ic_addpost"
         android:title=""
+        />
 
+    <item
+        android:id="@+id/findbuddy"
+        android:icon="@drawable/ic_findbuddy"
+        android:title=""
         />
     <item
         android:id="@+id/profile_nav"
         android:icon="@drawable/ic_profile"
         android:title=""
         />
-    <item
-        android:id="@+id/settings_nav"
-        android:icon="@drawable/ic_settings"
-        android:title=""
-        />
+
 
 </menu>

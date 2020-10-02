@@ -71,14 +71,6 @@ public class Homepage extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Project Chisel");
         tabLayout.getTabAt(2).setIcon(R.drawable.chat_fragment);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-//        if (tabLayout.getTabAt(0).isSelected()){
-//            Intent imageTake = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//
-//            if (imageTake.resolveActivity(getPackageManager())!= null){
-//                startActivityForResult(imageTake,101);
-//            }
-//    }
     }
 
 
@@ -91,14 +83,6 @@ public class Homepage extends AppCompatActivity {
         MenuItem menuItem =  menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//
-//    }
 }
 
 

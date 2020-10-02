@@ -42,6 +42,7 @@
         android:textColorHint="@color/Grey"
         android:textColor="@color/White"
         android:id="@+id/workoutname"
+        android:imeOptions="actionDone"
         />
 
     <TextView

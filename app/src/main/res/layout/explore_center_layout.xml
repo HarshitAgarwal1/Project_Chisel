@@ -25,6 +25,17 @@
         android:fontFamily="casual"
         android:background="@drawable/searchbg"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/users"
+        android:orientation="vertical"
+        android:layout_below="@id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exploretagsrecyclerview"

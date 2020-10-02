@@ -49,6 +49,8 @@ public class AddWorkout extends AppCompatActivity implements ExerciseAdapter.OnI
 
     /*TODO:
        Spotify PlayerAPI integration (REDIRECT URL Error)
+       Chronometer
+       Add Workout Adapter
      */
 
 
@@ -162,13 +164,10 @@ public class AddWorkout extends AppCompatActivity implements ExerciseAdapter.OnI
             }
         });
 
-        endWorkout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(AddWorkout.this, Homepage.class);
-                startActivity(intent);
-                return true;
-            }
+        endWorkout.setOnLongClickListener(v -> {
+            Intent intent = new Intent(AddWorkout.this, Homepage.class);
+            startActivity(intent);
+            return true;
         });
 
         endWorkout.setOnTouchListener((v, event) -> {

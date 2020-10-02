@@ -1,4 +1,4 @@
-package com.example.projectchisel.Settings;
+package com.example.projectchisel.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,8 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -20,20 +18,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.projectchisel.Homepage.SectionsPagerAdapter;
 import com.example.projectchisel.Login;
 import com.example.projectchisel.Model.UserInfo;
-import com.example.projectchisel.Model.User_Private;
-import com.example.projectchisel.Profile.Profile;
 import com.example.projectchisel.R;
-import com.example.projectchisel.Utils.BottomNavigationViewHelper;
-import com.example.projectchisel.Utils.StringManipulation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +35,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -58,7 +48,7 @@ public class Settings extends AppCompatActivity {
         Convert everything into Recycler View Items
      */
     public static final String TAG = "SettingsActivity" ;
-    public static final int ACTIVITY_NUM = 4 ;
+
     private String uid ;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRef = firebaseDatabase.getReference();
@@ -77,7 +67,7 @@ public class Settings extends AppCompatActivity {
         Log.d(TAG, "onCreate starting") ;
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        setupBottomNavigationView() ;
+
         overridePendingTransition(0,0) ;
 
         if(mAuth.getCurrentUser() != null){
@@ -263,15 +253,7 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    private void setupBottomNavigationView() {
-        Log.d(TAG, "setupBottomNavigationView: setting Up Helper");
-        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomnavviewbar);
-        BottomNavigationViewHelper.setupBottomNavigationViewHelper(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNav(Settings.this, bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem =  menu.getItem(ACTIVITY_NUM);
-        menuItem.setChecked(true);
-    }
+
 
     private UserInfo RetrieveAccountUsername(DataSnapshot dataSnapshot) {
         Log.d(TAG, "Retrieving Account Details");

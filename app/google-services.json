@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "653492967185",
+    "firebase_url": "https://project-chisel.firebaseio.com",
+    "project_id": "project-chisel",
+    "storage_bucket": "project-chisel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653492967185:android:8fbf657bd1b0ebba619eb0",
+        "android_client_info": {
+          "package_name": "com.example.projectchisel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653492967185-bl7oed5tnaugmf9ejsdfpv5477gqtih0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectchisel",
+            "certificate_hash": "e94038abf6dc64b732f637fef5b240f2559b823a"
+          }
+        },
+        {
+          "client_id": "653492967185-lr0nsqkvaut0p1ldi0hsp0gq9kukaj4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8ZoNStvRVJCzxyJ75EoYqcgki5DRFJSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653492967185-lr0nsqkvaut0p1ldi0hsp0gq9kukaj4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
